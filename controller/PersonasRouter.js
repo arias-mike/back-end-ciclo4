@@ -11,7 +11,6 @@ PersonasRouter.get("/", (req, res) => {
 
 //guardar nueva persona
 PersonasRouter.post("/", (req, res) => {
-    console.log(req.body);
     const persona = new Personas(req.body);
     persona.save()
     .then((datos) => {
@@ -26,12 +25,12 @@ PersonasRouter.post("/", (req, res) => {
 PersonasRouter.patch("/", (req, res) => {
     const persona = new Personas(req.body);
     persona.updateOne({_id: persona._id}, persona)
-    .then((datos) => {
-        res.json(datos);
-    })
-    .catch((error) => {
-        res.json({ mensaje: error });
-    });
+        .then((datos) => {
+            res.json(datos);
+        })
+        .catch((error) => {
+            res.json({ mensaje: error });
+        });
 });
 
 //Eliminar persona
